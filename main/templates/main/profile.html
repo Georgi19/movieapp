@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% load static %}
+{%block content%}
+<link rel="stylesheet"  href="{% static 'd.css' %}">
+
+<div class="user_profile">
+<div class="user_profile_data">
+    <img src="{{cuser.profile.profile_pic.url}}" class="user_profile_img">
+    <div class="user_info_box">
+    <h1 style='text-align: center;'>{{cuser.username}}</h1>
+    
+    
+    <p>joined: {{cuser.date_joined}}</p>
+    <p>last seen: {{cuser.last_login}}</p>
+    {%if cuser.username == user.username%}
+    <a style="color: black;text-decoration: none;" href="{% url 'main:change_pic' %}">change profile picture</a><br>
+    {%endif%}
+    </div>
+    
+</div>
+<div class="user_movie_list">
+<h2 style='margin-bottom: 20px;'>{{cuser.username}} has watched :</h2>
+{%for movie in seen_movies%}
+
+<div class="movie_list_container">
+<img src=https://image.tmdb.org/t/p/w1280{{movie.poster_path}} class="movie_list_poster">
+
+<a style="color: black;text-decoration: none;" href="{% url 'main:movie_info' movie.id %}">{{movie.title}}</a><br>
+</div>
+
+{%endfor%}
+</div>
+</div>
+
+{%endblock%}

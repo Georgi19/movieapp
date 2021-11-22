@@ -1,0 +1,61 @@
+{% extends "main/base.html" %}
+{%block content%}
+   
+    <div class="container" >
+      <div class="row row-cols-sm-5 ">
+        {%for item in data%}
+           
+          <div class="card-group ">
+            <div class="card  border-dark mb-3 " style="width: 18rem;">
+              <img src=https://image.tmdb.org/t/p/w1280{{item.profile_path}} class="card-img-top" alt={{item.name}}>
+              <div class="card-body shadow-lg" style="background-color: rgb(62, 35, 71)">
+                <a href="person_details/{{item.id}}" class="stretched-link "></a>
+                <h5 class="card-title small text-white">{{item.name}}
+                </h5>
+              </div>
+            </div>
+          </div>
+         
+        {%endfor%}
+      
+    </div>
+  </div>
+  
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      
+      {%if data.number > 5%}  
+      <li class="page-item text-dark">
+       <a class="page-link" href="?page=1">1</a>
+      </li>
+      <li class="page-item disabled">
+        <span class="page-link">...</span>
+      </li>
+     {%endif%}
+      
+             
+      {% for n in data.paginator.page_range %}
+             
+       {% if data.number == n %}
+        <li class="page-item active" >
+          <span class="page-link border-dark" style="background-color: rgb(67, 27, 68);" href="#">{{n}}</span>
+        </li>
+       {% elif n > data.number|add:'-5' and n < data.number|add:'5'%}
+        <li class="page-item">
+         <a class="page-link text-dark"  href="?page={{n}}">{{n}}</a>
+        </li>
+       {% endif %}
+              
+      {% endfor %}
+            
+      {%if data.number < data.paginator.num_pages|add:'-5'%}  
+       <li class="page-item disabled">
+        <span class="page-link">...</span>
+       </li>
+       <li class="page-item">
+        <a class="page-link text-dark" href="?page={{data.paginator.num_pages }}">{{data.paginator.num_pages }}</a>
+       </li>
+      {%endif%}
+    </ul>
+</nav>
+{%endblock%}

@@ -1,0 +1,129 @@
+{% extends "main/base.html" %}
+{% load static %}
+{%block content%}
+<link rel="stylesheet"  href="{% static 'd.css' %}">
+<div class="font_wrap">
+<div  class = "backdrop" style="background-image:url(https://image.tmdb.org/t/p/w1280{{movie.backdrop_path}})">
+   
+    <div class = "backdrop_background">
+      <div class="poster">
+        <div class="poster_top">
+         {%if movie.vote_avg < 5%}
+           <div class="vote_avg" style="border-color: red;">
+              <p style= "color: white;margin-top: 10px;">{{movie.vote_avg|floatformat:"1"}}</p>
+           </div>
+           {%elif movie.vote_avg >= 5 and movie.vote_avg <= 7.5%}
+           <div class="vote_avg" style="border-color: yellow;">
+              <p style= "color: white;margin-top: 10px;">{{movie.vote_avg|floatformat:"1"}}</p>
+           </div>
+           {%elif movie.vote_avg > 7.5%}
+           <div class="vote_avg" style="border-color: green;">
+              <p style= "color: white;margin-top: 10px;">{{movie.vote_avg|floatformat:"1"}}</p>
+           </div>
+         {%endif%}
+         <img src=https://image.tmdb.org/t/p/w1280{{movie.poster_path}} alt={{movie.title}} class= "poster_image" >
+        </div>
+         
+         
+      </div>
+    
+
+    <div class = "details">
+      <h1 style="margin-bottom: 20px;">{{movie.title}}</h1>
+      {%if user.is_authenticated%}
+
+      {%if seen is not True%}
+
+      <button style='padding: 1px 1px 1px 1px;font-size: small;margin-bottom: 5px;'data-id="{{movie.id}}" watched={{seen}} type="button" class="btn btn-success btn-lg active" id="seen" name="seen" title={{movie.title}} user={{user.username}}>add to list</button>
+      
+     {%else%}
+     <button style='padding: 1px 1px 1px 1px;font-size: small;margin-bottom: 5px;'data-id="{{movie.id}}" watched={{seen}} type="button" class="btn btn-danger btn-lg active  " id="seen" name="seen" title={{movie.title}} user={{user.username}}>remove from list</button>
+     {%endif%}
+      <p style="color: white;">Release date: ({{movie.release_date}})</p>
+      <p style="color: white;">Genres:</p>
+       {%for genre in movie.genres.all%}
+         <p class="tags" style="margin-right: 2px;font-size: medium;font-weight: lighter;">{{genre.name}},</p>
+       {%endfor%}
+      
+      <p style="margin-top: 10px;">Overview :</p>
+      <p style="font-size: medium;font-weight: lighter;">{{movie.overview}}</p>
+      
+      
+    </div>
+    </div>
+<div class="container"id="test" >
+ <h2>Cast</h2> 
+ 
+
+ <div class="row">
+   {%for person in people|slice:"6"%}
+  
+   <div class="card-group mt-4 mb-4" style="width: 180px;">
+   <div class="card shadow-lg " style="border-radius: 10px;">
+   <img src = https://image.tmdb.org/t/p/w1280{{person.profile_path}} class="card-img-top" style = "border-radius: 10px 10px 0 0;height: 200px;"> </img>
+    <div class="card-body" style="text-align: center;padding: 10px;">
+    <p style="margin: 0 auto;">{{person.name}}</p>
+    </div>
+    <a href="{% url 'main:person_details' person.id %}" class="stretched-link "></a>
+ </div>
+</div>
+
+{%endfor%}
+{%if people.count > 6 %} 
+<a href="{% url 'main:full_cast' movie.id %}" class="btn btn custom btn-lg active" role="button" aria-pressed="true" style="width: 10%;margin-left: 1000px ;">more-></a>
+{%endif%}
+ </div>
+ 
+ {%endif%}
+  <p style="display: inline-block"></p>
+ </div>
+
+
+
+<script>
+  
+  $( function() {
+    $('#seen').on('click',function(){
+      var attr_value = $(this).attr ('watched');
+      var title = $(this).attr('title');
+      var el = $(this)
+      if (attr_value=='True') {
+        $.ajax({
+        type: 'DELETE',
+        url:'/catalogue/movie_info/' + el.attr('data-id'),
+        headers: {'X-CSRFToken': '{{ csrf_token }}'},
+        success: function(el){
+          alert( "You've removed '"+title+"' to your movie list!" );
+          $('.btn').removeClass("btn-danger");
+          $('.btn').addClass("btn-success");
+          $('#seen').attr('watched', 'False')
+          $('#seen').html('add to list')
+        }
+      })
+      }
+      else{
+        $.ajax({
+        type: 'POST',
+        url:'/catalogue/movie_info/' + el.attr('data-id') +'/',
+        headers: {'X-CSRFToken': '{{ csrf_token }}'},
+        success: function(el){
+          alert( "You've added '"+title+"' to your movie list!" );
+          $('.btn').removeClass("btn-success");
+          $('.btn').addClass("btn-danger");
+          
+          $('#seen').attr('watched', 'True')
+          $('#seen').html('remove from list')
+        }
+      })
+      }
+ 
+
+    })
+
+
+
+  })
+  </script>
+
+{%endblock%}
+

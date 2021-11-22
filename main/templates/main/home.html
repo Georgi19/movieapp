@@ -1,0 +1,46 @@
+{% extends "main/base.html" %}
+{% load static %}
+{%block content%}
+<link rel="stylesheet"  href="{% static 'd.css' %}">
+<div class="container">
+<div class="search_poster">
+  <div class="search">
+  <form class="form-inline" method="POST" action="{% url 'main:search_movies_res' %}">
+    {%csrf_token%}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search a movie,a person or an user" aria-label="Search" name="searched" id="data" >
+  </form>
+  </div>
+</div>
+<h1>Popular movies: </h1><br>
+<ul class="overflow_container"id="popular_movies"></ul>
+</div>
+<script>
+  $(function(){
+      var $popular_movies = $('#popular_movies');
+      $.ajax({
+      type: "GET",
+      url:'/get_popular_movies/',
+      headers: {'X-CSRFToken': '{{ csrf_token }}'},
+      success: function(data){
+      
+       $.each(JSON.parse(data),function(i,item){
+         var $src='https://image.tmdb.org/t/p/w1280'+item.poster_path;
+     
+         $popular_movies.prepend(  
+
+              "<div class='home_items_body bouncer'><a style='color: black;text-decoration: none;'href='/catalogue/movie_info/"+ item.id+ "'><img ' class='home_items_poster' src='"+$src+ "'></a>"+
+                
+              "<div class='home_items_text_box'><p >"+item.title+"</p></div></div>"
+            );
+       });
+      }
+    });
+  });
+</script>
+{%endblock%}
+
+
+
+
+
+

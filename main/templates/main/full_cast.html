@@ -1,0 +1,26 @@
+{% extends "main/base.html" %}
+{% load static %}
+{%block content%}
+<link rel="stylesheet"  href="{% static 'd.css' %}">
+<div class="font_wrap">
+<div class="container">
+    <h1 style="margin-bottom: 100px;">{{title}}'s cast :</h1>
+ <div class="row">
+   {%for person in people%}
+  
+   <div class="card-group mt-4 mb-4" style="width: 180px;">
+   <div class="card shadow-lg " style="border-radius: 10px;">
+   <img src = https://image.tmdb.org/t/p/w1280{{person.profile_path}} class="card-img-top" style = "border-radius: 10px 10px 0 0;height: 200px;"> </img>
+    <div class="card-body" style="text-align: center;padding: 10px;">
+    <p style="margin: 0 auto;">{{person.name}}</p>
+    </div>
+    <a href="{% url 'main:person_details' person.id %}" class="stretched-link "></a>
+ </div>
+</div>
+
+{%endfor%} 
+ </div>
+  <p style="display: inline-block"></p>
+</div>
+</div>
+{%endblock%}

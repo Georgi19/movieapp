@@ -1,0 +1,316 @@
+.poster_image{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px
+}
+.backdrop{
+    height: 600px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
+}
+.backdrop_background{
+    
+    height: 600px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
+    background-color: rgba(24, 21, 26,0.8);
+    display:flex;
+    flex-flow: row nowrap;
+    margin-bottom: 50px;
+}
+
+.vote_avg{
+    border: 8px solid;
+    border-color: rgb(245, 245, 245);
+ 
+    width: 60px;
+    height: 60px;
+    background-color: rgb(24, 21, 26);
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: absolute;
+}
+.tags{
+    color: white; 
+    display: inline;
+}
+
+.details{
+    padding-top: 100px;
+    height: 100%;
+    width: 100%;   
+    color:white;
+    padding-right: 80px;
+   
+}
+.poster{
+    background-color: black;
+    height: 530px;
+    width: 450px;
+    margin-left: 10px;
+    margin-right: 30px;
+    box-shadow:0px 0px 30px 10px grey;
+    border-radius: 10px;
+    align-self: center;
+    text-align: center;
+}
+.poster_bottom{
+    width: 100%;
+    height: 15%;
+    background-color: rgb(67, 27, 68);
+    border-radius:   0 0 10px 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+.poster_top{
+    width: 100%;
+    height: 100%;
+    
+    border-radius: 10px;
+    background-color: white;
+}
+.people_mini_card_body{
+    height: 280px;
+    width: 150px;
+    background-color: black;
+    margin-left: 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    box-shadow:20px 20px 50px 15px grey
+}
+.people_mini_card_conteiner{
+    height: 300px;
+    width: 100%;
+    background-color: rgb(236, 236, 236);
+    display:flex;
+    flex-flow: row nowrap;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    
+}
+.people_mini_card_top{
+    height: 80%;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px 10px 0 0;
+}
+.people_mini_card_bottom{
+    height: 20%;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    background-color: white;
+    text-align: center;
+    padding-top: 5px;
+   
+}
+.font_wrap{
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size:large;
+    font-weight:700;
+}
+.overflow_div{
+    overflow-x: scroll;
+}
+.btn.custom{
+    background-color: rgb(67, 27, 68);
+    color: white;
+}
+.person_details_container{
+    
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+    width: 100%;
+    border: 1px solid;
+}
+.person_profile_img{
+    height: 480px;
+    width: 360px;
+    border-radius: 10px;
+    border: 1px solid;
+}
+.person_profile_container{
+    
+    width: 36%;
+    height: 100%;
+    
+    border: 0,1px,0,1px solid;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+.person_textbox
+{
+    padding-top: 20px;
+    font-size: medium;
+    padding: 0px auto;
+    line-height: 10px;
+    padding-left: 10px;
+    
+}
+.person_bio{
+    width: 60%;
+    height: 100%;
+    padding-top: 20px;
+  
+}
+.sign_in_or_up{
+    height: 600px;
+    width: 40%;
+    background-color: white;
+    margin-left: 30%;
+    text-align: center;
+    border: solid 15px;
+    border-color: rgb(67, 27, 68);
+    padding-top: 50px;
+}
+.user_profile{
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid;
+    padding-left: 50px;
+    padding-top: 50px;
+    font-weight:700;
+    background-color: rgb(170, 136, 182)
+}
+.user_movie_list{
+    height: 100%;
+    width: 70%;
+    
+    padding-left: 50px;
+    padding-top: 50px;
+}
+.movie_list_container{
+    width: 500px;
+    height: 110px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding-top: 4px;
+    padding-left: 4px;
+    background-color: white;
+    box-shadow: 10px 10px 25px;
+}
+.movie_list_poster{
+    height: 100px;
+    width: 80px;
+    border-radius: 10px;
+    border: 1px solid;
+}
+.user_profile_data{
+    height: 100%;
+    width: 360px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 50px;
+    margin-bottom: 55px;
+}
+.user_info_box{
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 10px 10px;
+    border-width: 1px;
+    border-style: hidden solid solid  solid;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.user_status{
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.user_profile_img{
+    height: 480px;
+    width: 360px;
+    border-radius: 10px 10px 0 0;
+    border-width: 1px;
+    border-style:  solid solid solid solid ;
+}
+
+.seen{ 
+   
+    background-color: rgb(88, 23, 23); 
+  }
+.seen.foo { 
+    
+     background-color: rgb(47, 161, 24); 
+  }
+.home_items_text_box{
+    display: flex;
+    width: 100%;
+   
+    height: 20%;
+    white-space: normal ;
+    font-weight:500;
+}
+.home_items_body
+{
+    display: flex;
+    flex-flow: column nowrap;
+    display: inline-block;
+    margin-right:10px;
+    width: 160px;
+   
+}
+.home_items_poster{
+    width: 100%;
+    height: 220px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.search{
+    width: 100%;
+    height: 500px;
+    background-color: rgba(62, 35, 71,0.6);
+    padding-top: 400px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+.search_poster{
+    width: 100%;
+    height: 100%;
+    
+    border-radius: 10px;
+  
+    background-image: url("/images/peaky_blinders2.jpg");
+    background-size: cover;
+    
+    background-repeat: no-repeat;
+    
+}
+.profile_icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    
+}
+@keyframes bounce{
+    from {
+        transform: translateY(5px);
+      }
+      to {
+        transform: translateY(-5px);
+      }
+}
+
+.home_items_body:hover{
+    animation: bounce 1000ms infinite alternate;
+}
+.overflow_container{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+   padding-top: 20px;
+    height: 340px;
+}

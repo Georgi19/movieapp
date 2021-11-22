@@ -1,0 +1,49 @@
+{% extends "main/base.html" %}
+{% load static %}
+{%block content%}
+<link rel="stylesheet"  href="{% static 'd.css' %}">
+<div class="font_wrap">
+<div class="person_details_container">
+<div class="person_profile_container">
+    <img class="person_profile_img" src="https://image.tmdb.org/t/p/w1280{{person.profile_path}}">
+    <div class="person_textbox">
+     <p>Famous for</p>
+     <p style="font-weight:lighter;margin-top: 0px;">{{person.known_for_department}}</p>
+     <p>Birthday</p>
+     <p style="font-weight:lighter;margin-top: 0px;">{{person.birthday}}</p>
+     <p>Place of birth</p>
+     <p style="font-weight:lighter;margin-top: 0px;">{{person.place_of_birth}}</p>
+    </div>
+    
+</div>
+<div class="person_bio">
+ <h1 style="margin-bottom: 30px;">{{person.name}}</h1>
+ <p>Biography</p>
+ <p style="font-size: medium;font-weight: lighter;">{{person.biography}}</p>
+ </div>
+  <p style="display: inline-block"></p>
+</div>
+<div class="container" style="padding-top:20px;">
+    <p>Popular movies</p>
+<div class="row">
+    {%for movie in movies|slice:"6"%}
+   
+    <div class="card-group mt-4 mb-4" style="width: 180px;">
+    <div class="card shadow-lg " style="border-radius: 10px;">
+    <img src = https://image.tmdb.org/t/p/w1280{{movie.poster_path}} class="card-img-top" style = "border-radius: 10px 10px 0 0;height: 200px;"> </img>
+     <div class="card-body" style="text-align: center;padding: 10px;">
+     <p style="margin: 0 auto;">{{movie.title}}</p>
+     </div>
+     <a href="{% url 'main:movie_info' movie.id %}" class="stretched-link "></a>
+  </div>
+ </div>
+ 
+ {%endfor%}
+ {%if movies.count > 6 %} 
+ <a href="{% url 'main:all_credits' person.id %}" class="btn btn custom btn-lg active" role="button" aria-pressed="true" style="width: 10%;margin-left: 1000px ;">more-></a>
+ {%endif%}
+ </div>
+ <p style="display: inline-block"></p>
+</div>
+</div>
+{%endblock%}
