@@ -11,8 +11,8 @@ def run():
    count_nm = NewMovies.objects.count()
    count_p = NewPeople.objects.count()
 
-  # NewMovies.objects.all().delete()
-   #NewPeople.objects.all().delete()
+   NewMovies.objects.all().delete()
+   NewPeople.objects.all().delete()
 
    print("Added movies : " ,count_nm)
    print("Added people : " ,count_p)
