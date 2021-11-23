@@ -74,7 +74,7 @@ def add_genres():
 def update_movies_db():
       
         results_movie=requests.get('https://api.themoviedb.org/3/discover/movie?api_key=2b5b38b211b06bb26131ced7fca692bc').json()
-        for page_movie in range(1,2):
+        for page_movie in range(1,results_movie['total_pages']+1):
          page_results_movie = requests.get('https://api.themoviedb.org/3/discover/movie?page='+f'{page_movie}'+'&api_key=2b5b38b211b06bb26131ced7fca692bc').json()
          with transaction.atomic():
           for item_movie in page_results_movie['results']:
