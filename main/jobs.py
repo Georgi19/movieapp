@@ -1,7 +1,9 @@
 from django.conf import settings
 import os
 import django
-
+os.environ.setdefault('DJANGO_SETTINGS_MODULE','mysite.settings')
+import django
+django.setup()
 import requests
 from requests.api import get
 from main.models import Movie , Genre, NewMovies , Person, NewPeople
