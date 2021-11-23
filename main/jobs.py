@@ -138,10 +138,3 @@ def delete_new():
    print("Added movies : " ,count_nm)
    print("Added people : " ,count_p)
            
-def updt():
-    update_movies_db()
-    update_people_db()
-    add_genres()
-    add_details_people()
-    add_cast()
-    delete_new()
