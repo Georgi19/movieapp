@@ -77,7 +77,7 @@ class Profile(models.Model):
 User = get_user_model()
 
 def user_signed_up_receiver(request,user, **kwargs):
-    movie_list = Profile(user=User)
+    movie_list = Profile(user=user)
     movie_list.save()
 
 user_signed_up.connect(user_signed_up_receiver,sender=User)
