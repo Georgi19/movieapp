@@ -50,11 +50,10 @@ INSTALLED_APPS = [
     'django_extensions',
     
 ]
-INSTALLED_APPS += ('django_celery_beat',)
+
 
 SITE_ID = 1
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
 
 MIDDLEWARE = [
 
