@@ -11,7 +11,7 @@ sched = BlockingScheduler()
 
 @sched.scheduled_job('interval', seconds=5)
 def timed_job():
-    print('This job is run every three minutes.')
+    update_movies_db()
 
 
 sched.start()
