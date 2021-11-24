@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import django_heroku
 from pathlib import Path
 from django.contrib.auth import get_user_model
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -96,7 +97,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
-
+django_heroku.settings(locals())
 
 
 #ACCOUNT_EMAIL_REQUIRED = True
