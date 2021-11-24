@@ -5,10 +5,13 @@ from datetime import datetime
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','mysite.settings')
 import django
 django.setup()
-scheduler = BackgroundScheduler()
+from apscheduler.schedulers.blocking import BlockingScheduler
 
-@scheduler.scheduled_job('interval',seconds=1,next_run_time=datetime.now())
-def updt():
-    print ('asdasdas')
-    
-scheduler.start()
+sched = BlockingScheduler()
+
+@sched.scheduled_job('interval', seconds=5)
+def timed_job():
+    print('This job is run every three minutes.')
+
+
+sched.start()
