@@ -9,7 +9,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', seconds=5)
+@sched.scheduled_job('interval', minutes=2)
 def timed_job():
     update_movies_db()
 
